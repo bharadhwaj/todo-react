@@ -1,3 +1,7 @@
 .strikethrough + label {
 	text-decoration: line-through;
 }
+
+.close-button {
+	cursor: pointer;
+}

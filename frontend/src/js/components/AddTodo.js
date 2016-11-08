@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
+import store from '../store'
 
 class AddTodo extends Component {
 
 	componentWillMount() {
-		this.setState({ todoText: undefined })	
+		this.setState({ todoText: '' })
 	}
 
 	createTodo(event) {
-		if (this.state.todoText) {
+		if (this.state.todoText.trim()) {
 			Materialize.toast('New card added successfully!', 2000)
+			let payload = { id : Date.now(), text : this.state.todoText, complete : false}
+			store.dispatch({ type : 'ADD_TODO', payload : payload })
+			this.setState({ todoText: '' })
 		} else {
 			Materialize.toast('To-Do text can\'t be blank.', 2000)
 		}
@@ -30,7 +34,7 @@ class AddTodo extends Component {
 								<div className="input-field">
 									<i className="material-icons prefix">list</i>
 									<label className="left-align" for="todoText">Enter your To Do</label>
-									<input id="todoText" type="text" className="validate" onChange={this.handleTextChange.bind(this)} required/>
+									<input value={this.state.todoText} id="todoText" type="text" className="validate" onChange={this.handleTextChange.bind(this)}/>
 								</div>
 								<div className="center-align">
 									<button className="btn waves-effect btn-large waves-light" type="submit" onClick={this.createTodo.bind(this)}>

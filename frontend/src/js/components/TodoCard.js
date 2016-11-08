@@ -10,24 +10,27 @@ class TodoCard extends Component {
 		} else if (status === 'incomplete') {
 			Materialize.toast('Card successfully moved to Completed!', 2000)
 		}
-		store.dispatch({
-			type : 'TOGGLE_TODO',
-			payload : todo.id,
-		})
+		store.dispatch({ type : 'TOGGLE_TODO', payload : todo })
+	}
+
+	deleteCards() {
+		const { todo } = this.props
+		Materialize.toast('Card removed successfully!', 2000)
+		store.dispatch({ type : 'REMOVE_TODO', payload : todo })
 	}
 
 	render() {
 		const { todo, status } = this.props
-		const checkedStatus = status === 'complete' ? 'checked' : ''
+		const checkedStatus = status === 'complete' ? 'defaultChecked' : ''
 		return (
 			<div className="card-panel hoverable">
-					<input checked={checkedStatus} className={status === 'complete' ? 'strikethrough' : null } onClick={this.toggleCards.bind(this)} type="checkbox" id={todo.id} />
+					<input type="checkbox" id={todo.id} defaultChecked={checkedStatus} className={status === 'complete' ? 'strikethrough' : null } onClick={this.toggleCards.bind(this)}/>
 					<label for={todo.id}>
 						<h7> {todo.text} </h7>
 					</label>
-				<a href="" className="secondary-content">
+				<span onClick={this.deleteCards.bind(this)} href="" className="close-button secondary-content">
 					<i className="material-icons">close</i>
-				</a>
+				</span>
 			</div>
 		)
 	}
