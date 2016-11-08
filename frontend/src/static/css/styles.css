@@ -5,3 +5,10 @@
 .close-button {
 	cursor: pointer;
 }
+
+#toast-container {
+	top: 10%;
+	left: 41%;
+	right: auto !important;
+	bottom: auto !important;
+}

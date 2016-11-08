@@ -9,12 +9,12 @@ class AddTodo extends Component {
 
 	createTodo(event) {
 		if (this.state.todoText.trim()) {
-			Materialize.toast('New card added successfully!', 2000)
+			Materialize.toast('New card added successfully!', 2000, 'green')
 			let payload = { id : Date.now(), text : this.state.todoText, complete : false}
 			store.dispatch({ type : 'ADD_TODO', payload : payload })
 			this.setState({ todoText: '' })
 		} else {
-			Materialize.toast('To-Do text can\'t be blank.', 2000)
+			Materialize.toast('To-Do text can\'t be blank.', 2000, 'red lighten-1')
 		}
 	}
 

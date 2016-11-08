@@ -14,6 +14,7 @@ export default function reducer(state = {
 	totalTodos : 2,
 	inCompletedTodos : 2,
 }, action) {
+	
 	switch(action.type) {
 
 		case "ADD_TODO": {
