@@ -1,17 +1,12 @@
 'use strict'
 const Sequelize = require('sequelize')
 const sequelize = require('../services/db')
-const Todos = require('../model/todo')
+const Todos = require('../model/todos')
 
 module.exports = {
 
-	addTodo(req, res) {
-
-		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
-		res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
-		res.setHeader('Access-Control-Allow-Credentials', 'true')
-		
-		sequelize.sync()
+	createTodo(req, res) {
+		return sequelize.sync()
 		.then(() => {
 			Todos.create({
 				id : req.body.id,
@@ -41,12 +36,7 @@ module.exports = {
 	},
 
 	removeTodo(req, res) {
-
-		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
-		res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
-		res.setHeader('Access-Control-Allow-Credentials', 'true')
-		
-		sequelize.sync()
+		return sequelize.sync()
 		.then(() => {
 			Todos.destroy({
 				where : {
