@@ -3,6 +3,13 @@ const todo = require('../dao/todoTable')
 
 module.exports = {
 
+	getAllTodo(req, res) {
+		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
+		res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
+		res.setHeader('Access-Control-Allow-Credentials', 'true')
+		todo.getAllTodos(req, res)
+	},
+
 	addTodo(req, res) {
 		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
 		res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
