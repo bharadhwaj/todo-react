@@ -3,18 +3,18 @@ const Sequelize = require('sequelize')
 const sequelize = require('../services/db')
 const Todos = require('../model/todos')
 
-module.exports = {
+class TodoClass {
 
-	createTodo(req, res) {
+	createTodo(todoDetails) {
 		return sequelize.sync()
 		.then(() => {
-			Todos.create({
-				id : req.body.id,
-				text : req.body.text,
+			return Todos.create({
+				id : todoDetails.id,
+				text : todoDetails.text,
 			})
 			.then(todo => {
 				console.log('\n New entry added: \n ', todo.dataValues)
-				res.json({ status: 'SUCCESS', todo : todo }) 
+				return ({ status: 'SUCCESS', todo : todo })
 			})
 			.catch(Sequelize.Error, err => {
 					console.log('\n Sequelize Error in addTodo: \n ', err.errors)
@@ -26,26 +26,33 @@ module.exports = {
 							'value': error.value,
 						})
 					})
-					res.json({ status : 'FAILED', error : errors })
+					return ({ status : 'FAILED', error : errors })
 				})
 			.catch(err => {
-				res.json({ status : 'FAILED', error : err })
 				console.log('\n Error in addTodo: \n ', err) 
+				return ({ status : 'FAILED', error : err })
 			})
 		})
-	},
+			
+	}
 
-	removeTodo(req, res) {
+	removeTodo(id) {
 		return sequelize.sync()
 		.then(() => {
-			Todos.destroy({
+			return Todos.destroy({
 				where : {
-					id : req.params.id,
+					id : id,
 				}
 			})
 			.then(response => {
-				console.log('\n Successfully deleted: \n ', response)
-				res.json({ status: 'SUCCESS', message : 'Successfully deleted' }) 
+				if (response === 1){
+					console.log('Successfully deleted')
+					return ({ status: 'SUCCESS', message : 'Successfully deleted' }) 
+				}
+				else {
+					console.log('Deletion failed')
+					return ({ status: 'FAILED', message : 'No such element to delete' }) 
+				}
 			})
 			.catch(Sequelize.Error, err => {
 					console.log('\n Sequelize Error in addTodo: \n ', err.errors)
@@ -57,22 +64,22 @@ module.exports = {
 							'value': error.value,
 						})
 					})
-					res.json({ status : 'FAILED', error : errors })
+					return ({ status : 'FAILED', error : errors })
 				})
 			.catch(err => {
-				res.json({ status : 'FAILED', error : err })
 				console.log('\n Error in addTodo: \n ', err) 
+				return ({ status : 'FAILED', error : err })
 			})
 		})
-	},
+	}
 
-	getAllTodos(req, res) {
+	getAllTodos() {
 		return sequelize.sync()
 		.then(() => {
-			Todos.findAll({})
+			return Todos.findAll({})
 			.then(allTodos => {
 				console.log('\n Successfully fetched all todos.\n ')
-				res.json({ status: 'SUCCESS', allTodos : allTodos }) 
+				return ({ status: 'SUCCESS', allTodos : allTodos }) 
 			})
 			.catch(Sequelize.Error, err => {
 					console.log('\n Sequelize Error in addTodo: \n ', err.errors)
@@ -84,12 +91,14 @@ module.exports = {
 							'value': error.value,
 						})
 					})
-					res.json({ status : 'FAILED', error : errors })
+					return ({ status : 'FAILED', error : errors })
 				})
 			.catch(err => {
-				res.json({ status : 'FAILED', error : err })
 				console.log('\n Error in addTodo: \n ', err) 
+				return ({ status : 'FAILED', error : err })
 			})
 		})
 	}
 }
+
+module.exports = TodoClass

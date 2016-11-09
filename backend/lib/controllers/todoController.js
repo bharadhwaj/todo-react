@@ -1,5 +1,6 @@
 'use strict'
-const todo = require('../dao/todoTable')
+const TodoClass = require('../dao/todoTable')
+const todo = new TodoClass()
 
 module.exports = {
 
@@ -7,20 +8,24 @@ module.exports = {
 		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
 		res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
 		res.setHeader('Access-Control-Allow-Credentials', 'true')
-		todo.getAllTodos(req, res)
+		todo.getAllTodos()
+		.then(todoResponse => { res.json(todoResponse) })
 	},
 
 	addTodo(req, res) {
 		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
 		res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
 		res.setHeader('Access-Control-Allow-Credentials', 'true')
-		todo.createTodo(req, res)
+		let todoDetails = { id : req.body.id, text : req.body.text}
+		todo.createTodo(todoDetails)
+		.then(todoResponse => { res.json(todoResponse) })
 	},
 
 	removeTodo(req, res) {
 		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
 		res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
 		res.setHeader('Access-Control-Allow-Credentials', 'true')
-		todo.removeTodo(req, res)
+		todo.removeTodo(req.params.id)
+		.then(todoResponse => { res.json(todoResponse) })
 	}
 }
