@@ -17,17 +17,17 @@ class TodoClass {
 				return ({ status: 'SUCCESS', todo : todo })
 			})
 			.catch(Sequelize.Error, err => {
-					console.log('\n Sequelize Error in addTodo: \n ', err.errors)
-					var errors = []
-					err.errors.forEach(error => {
-						errors.push({
-							'message': error.message,
-							'param': error.path,
-							'value': error.value,
-						})
+				console.log('\n Sequelize Error in addTodo: \n ', err.errors)
+				let errors = [ ]
+				err.errors.forEach(error => {
+					errors.push({
+						'message': error.message,
+						'param': error.path,
+						'value': error.value,
 					})
-					return ({ status : 'FAILED', error : errors })
 				})
+				return ({ status : 'FAILED', error : errors })
+			})
 			.catch(err => {
 				console.log('\n Error in addTodo: \n ', err) 
 				return ({ status : 'FAILED', error : err })
@@ -55,17 +55,17 @@ class TodoClass {
 				}
 			})
 			.catch(Sequelize.Error, err => {
-					console.log('\n Sequelize Error in addTodo: \n ', err.errors)
-					var errors = []
-					err.errors.forEach(error => {
-						errors.push({
-							'message': error.message,
-							'parameter': error.path,
-							'value': error.value,
-						})
+				console.log('\n Sequelize Error in addTodo: \n ', err.errors)
+				let errors = [ ]
+				err.errors.forEach(error => {
+					errors.push({
+						'message': error.message,
+						'parameter': error.path,
+						'value': error.value,
 					})
-					return ({ status : 'FAILED', error : errors })
 				})
+				return ({ status : 'FAILED', error : errors })
+			})
 			.catch(err => {
 				console.log('\n Error in addTodo: \n ', err) 
 				return ({ status : 'FAILED', error : err })
@@ -82,17 +82,17 @@ class TodoClass {
 				return ({ status: 'SUCCESS', allTodos : allTodos }) 
 			})
 			.catch(Sequelize.Error, err => {
-					console.log('\n Sequelize Error in addTodo: \n ', err.errors)
-					var errors = []
-					err.errors.forEach(error => {
-						errors.push({
-							'message': error.message,
-							'parameter': error.path,
-							'value': error.value,
-						})
+				console.log('\n Sequelize Error in addTodo: \n ', err.errors)
+				let errors = [ ]
+				err.errors.forEach(error => {
+					errors.push({
+						'message': error.message,
+						'parameter': error.path,
+						'value': error.value,
 					})
-					return ({ status : 'FAILED', error : errors })
 				})
+				return ({ status : 'FAILED', error : errors })
+			})
 			.catch(err => {
 				console.log('\n Error in addTodo: \n ', err) 
 				return ({ status : 'FAILED', error : err })
