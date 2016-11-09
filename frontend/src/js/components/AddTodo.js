@@ -8,6 +8,7 @@ class AddTodo extends Component {
 	}
 
 	createTodo(event) {
+		event.preventDefault()
 		if (this.state.todoText.trim()) {
 			Materialize.toast('New card added successfully!', 2000, 'green')
 			let payload = { id : Date.now(), text : this.state.todoText, complete : false}
