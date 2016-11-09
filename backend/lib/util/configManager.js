@@ -9,7 +9,7 @@ const options = {
 }
 
 configManager.init(options);
-// configManager.addConfig('app');
+configManager.addConfig('app')
 configManager.addConfig('db')
 // configManager.addConfig('logger');
 
