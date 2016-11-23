@@ -1,18 +1,7 @@
 export default function reducer(state = { 
-	todos : [
-		{
-			id : 1478591056561,
-			text : 'Go home, Get drunk!',
-			complete : false,
-		},
-		{
-			id : 1478590075912,
-			text : 'Tip the bartender.',
-			complete : false,
-		},
-	],
-	totalTodos : 2,
-	inCompletedTodos : 2,
+	todos : [ ],
+	totalTodos : 0,
+	inCompletedTodos : 0,
 }, action) {
 	
 	switch(action.type) {
