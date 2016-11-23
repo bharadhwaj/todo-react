@@ -21,7 +21,7 @@ class TodoCard extends Component {
 
 	render() {
 		const { todo, status } = this.props
-		const checkedStatus = status === 'complete' ? 'defaultChecked' : ''
+		const checkedStatus = status === 'complete' ? 'defaultChecked' : null
 		return (
 			<div className="card-panel hoverable">
 				<input type="checkbox" id={todo.id} defaultChecked={checkedStatus} className={status === 'complete' ? 'strikethrough' : null } onClick={this.toggleCards.bind(this)}/>

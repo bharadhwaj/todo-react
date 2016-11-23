@@ -6,9 +6,8 @@
 	cursor: pointer;
 }
 
-#toast-container {
-	top: 10%;
-	left: 41%;
-	right: auto !important;
-	bottom: auto !important;
+.loader-class {
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
 }

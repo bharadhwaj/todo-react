@@ -4,13 +4,16 @@ import { connect } from 'react-redux'
 import TodoCard from './TodoCard'
 import TodoSection from './TodoSection'
 
+
+
+
 @connect((store) => {
 	return {
 		todos : store.todoReducer.todos,
 	}
 })
 class CardsPanel extends Component {
-	
+
 	render() {
 		const { todos } = this.props
 

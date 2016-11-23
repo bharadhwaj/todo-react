@@ -20,9 +20,9 @@ export default function reducer(state = {
 		case "ADD_TODO": {
 			return {
 				...state,
-				todos : [action.payload, ...state.todos],
-				totalTodos : state.todos.length + 1,
-				inCompletedTodos : state.todos.filter(todo => todo.complete === false).length + 1
+				todos : [...action.payload, ...state.todos],
+				totalTodos : state.todos.length + action.payload.length,
+				inCompletedTodos : state.todos.filter(todo => todo.complete === false).length + action.payload.length
 			}
 		}
 

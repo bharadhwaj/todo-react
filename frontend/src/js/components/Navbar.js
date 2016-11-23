@@ -6,7 +6,7 @@ class Navbar extends Component {
 			<div className="row">
 				<nav>
 					<div className="nav-wrapper teal">
-						<a href="/" className="brand-logo center">
+						<a href="/" onClick={ (event) => event.preventDefault() } className="brand-logo center">
 							<h4>To-Do List</h4>
 						</a>
 					</div>
