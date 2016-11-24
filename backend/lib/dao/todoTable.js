@@ -36,6 +36,39 @@ class TodoClass {
 			
 	}
 
+	toggleTodo(todoDetails) {
+		return sequelize.sync()
+		.then(() => {
+			return Todos.update({
+				complete : todoDetails.complete,
+			},
+			{
+				where : { id : todoDetails.id }
+			})
+			.then(todo => {
+				console.log('\n Toggled the complete: \n ', todo)
+				return ({ status: 'SUCCESS', todo : todo })
+			})
+			.catch(Sequelize.Error, err => {
+				console.log('\n Sequelize Error in toggleTodo: \n ', err.errors)
+				let errors = [ ]
+				err.errors.forEach(error => {
+					errors.push({
+						'message': error.message,
+						'param': error.path,
+						'value': error.value,
+					})
+				})
+				return ({ status : 'FAILED', error : errors })
+			})
+			.catch(err => {
+				console.log('\n Error in addTodo: \n ', err) 
+				return ({ status : 'FAILED', error : err })
+			})
+		})
+			
+	}
+
 	removeTodo(id) {
 		return sequelize.sync()
 		.then(() => {

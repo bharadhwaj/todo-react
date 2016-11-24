@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import store from '../store'
 
 import { adNewTodo } from '../actions/todoActions'
 
@@ -12,9 +11,8 @@ class AddTodo extends Component {
 	createTodo(event) {
 		event.preventDefault()
 		if (this.state.todoText.trim()) {
-			Materialize.toast('New card added successfully!', 2000, 'green')
-			let data = { id : Date.now(), text : this.state.todoText, complete : false }
-			adNewTodo(data)
+			let todo = { id : Date.now(), text : this.state.todoText, complete : false }
+			adNewTodo(todo)
 			this.setState({ todoText: '' })
 		} else {
 			Materialize.toast('To-Do text can\'t be blank.', 2000, 'red lighten-1')

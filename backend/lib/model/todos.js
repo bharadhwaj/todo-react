@@ -4,7 +4,7 @@ const sequelize = require('../services/db')
 
 const Todos = sequelize.define('Todos', {
 	id : {
-		type : Sequelize.INTEGER,
+		type : Sequelize.BIGINT,
 		primaryKey: true,
 		allowNull : false,
 		validate:  {

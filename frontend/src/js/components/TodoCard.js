@@ -1,22 +1,17 @@
 import React, { Component } from 'react'
-import store from '../store'
+
+import { toggleTodo, deleteTodo } from '../actions/todoActions'
 
 class TodoCard extends Component {
 
 	toggleCards() {
 		const { status, todo } = this.props
-		if (status === 'complete') {
-			Materialize.toast('Card successfully moved to To-Do!', 2000, 'light-blue')
-		} else if (status === 'incomplete') {
-			Materialize.toast('Card successfully moved to Completed!', 2000, 'light-blue')
-		}
-		store.dispatch({ type : 'TOGGLE_TODO', payload : todo })
+		toggleTodo(todo, status)
 	}
 
 	deleteCards() {
 		const { todo } = this.props
-		Materialize.toast('Card removed successfully!', 2000, 'amber accent-2')
-		store.dispatch({ type : 'REMOVE_TODO', payload : todo })
+		deleteTodo(todo)
 	}
 
 	render() {

@@ -21,6 +21,15 @@ module.exports = {
 		.then(todoResponse => { res.json(todoResponse) })
 	},
 
+	toggleTodo(req, res) {
+		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
+		res.setHeader('Access-Control-Allow-Methods', 'POST')
+		res.setHeader('Access-Control-Allow-Credentials', 'true')
+		let todoDetails = { id : req.body.id, complete : req.body.complete }
+		todo.toggleTodo(todoDetails)
+		.then(todoResponse => { res.json(todoResponse) })
+	},
+
 	removeTodo(req, res) {
 		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
 		res.setHeader('Access-Control-Allow-Methods', 'POST')
