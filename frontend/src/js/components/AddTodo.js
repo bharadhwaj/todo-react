@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import store from '../store'
 
+import { adNewTodo } from '../actions/todoActions'
+
 class AddTodo extends Component {
 
 	componentWillMount() {
@@ -11,8 +13,8 @@ class AddTodo extends Component {
 		event.preventDefault()
 		if (this.state.todoText.trim()) {
 			Materialize.toast('New card added successfully!', 2000, 'green')
-			let payload = { id : Date.now(), text : this.state.todoText, complete : false}
-			store.dispatch({ type : 'ADD_TODO', payload : payload })
+			let data = { id : Date.now(), text : this.state.todoText, complete : false }
+			adNewTodo(data)
 			this.setState({ todoText: '' })
 		} else {
 			Materialize.toast('To-Do text can\'t be blank.', 2000, 'red lighten-1')

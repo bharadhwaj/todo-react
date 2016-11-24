@@ -11,7 +11,7 @@ export default function reducer(state = {
 				...state,
 				todos : [...action.payload, ...state.todos],
 				totalTodos : state.todos.length + action.payload.length,
-				inCompletedTodos : state.todos.filter(todo => todo.complete === false).length + action.payload.length
+				inCompletedTodos : state.todos.filter(todo => todo.complete === false).length + action.payload.filter(todo => todo.complete === false).length
 			}
 		}
 
