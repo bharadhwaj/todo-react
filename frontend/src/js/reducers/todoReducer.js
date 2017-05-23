@@ -1,9 +1,9 @@
-export default function reducer(state = { 
+export default function reducer(state = {
 	todos : [ ],
 	totalTodos : 0,
 	inCompletedTodos : 0,
 }, action) {
-	
+
 	switch(action.type) {
 
 		case "ADD_TODO": {
@@ -20,7 +20,7 @@ export default function reducer(state = {
 				...state,
 				todos: [...state.todos.filter(todo => todo.id !== action.payload.id)],
 				totalTodos : state.todos.length - 1,
-				inCompletedTodos : action.payload.complete ? state.inCompletedTodos : state.inCompletedTodos - 1 
+				inCompletedTodos : action.payload.complete ? state.inCompletedTodos : state.inCompletedTodos - 1
 			}
 		}
 
@@ -32,7 +32,7 @@ export default function reducer(state = {
 					todo.id === action.payload.id ? todo.complete = !todo.complete : todo.complete
 					return todo
 				})],
-				inCompletedTodos : action.payload.complete ? state.inCompletedTodos + 1 : state.inCompletedTodos - 1 
+				inCompletedTodos : action.payload.complete ? state.inCompletedTodos + 1 : state.inCompletedTodos - 1
 			}
 		}
 
@@ -57,6 +57,15 @@ export default function reducer(state = {
 					return todo
 				})],
 				inCompletedTodos : state.todos.filter(todo => todo.complete === false).length - 1
+			}
+		}
+
+		case "RESET_COUNT": {
+			return {
+				...state,
+				todos : [ ],
+				totalTodos : 0,
+				inCompletedTodos : 0
 			}
 		}
 

@@ -6,8 +6,8 @@ import apiConfig from '../config/apiConfig.js'
 
 const apiUrl = apiConfig.method + '://' +  apiConfig.host + ':' + apiConfig.port
 
-export function fetchAllTodos() {
-	axios.get(apiUrl+'/todos/all')
+export function fetchAllTodos(userEmail) {
+	axios.get(apiUrl+'/todos/all/'+userEmail)
 	.then(todos => {
 		if (todos.data.status === 'SUCCESS') {
 			const allTodos = todos.data.allTodos
@@ -27,6 +27,7 @@ export function adNewTodo(todo) {
 		queryString.stringify({
 			id : todo.id,
 			text : todo.text,
+			userEmail : todo.userEmail
 		})
 	)
 	.then(todos => {
@@ -51,7 +52,7 @@ export function toggleTodo(todo, status) {
 			complete : !todo.complete,
 		})
 	)
-	.then(todos => { 
+	.then(todos => {
 		if (status === 'complete') {
 			Materialize.toast('Card successfully moved to To-Do.', 2000, 'light-blue')
 		} else if (status === 'incomplete') {

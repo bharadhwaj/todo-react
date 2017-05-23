@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import { adNewTodo } from '../actions/todoActions'
 
+@connect((store) => {
+	return {
+		userData : store.userReducer,
+	}
+})
 class AddTodo extends Component {
 
 	componentWillMount() {
@@ -9,9 +15,14 @@ class AddTodo extends Component {
 	}
 
 	createTodo(event) {
+		const { userEmail } = this.props.userData
 		event.preventDefault()
 		if (this.state.todoText.trim()) {
-			let todo = { id : Date.now(), text : this.state.todoText, complete : false }
+			let todo = {  id : Date.now(),
+										text : this.state.todoText,
+										complete : false,
+										userEmail : userEmail
+									}
 			adNewTodo(todo)
 			this.setState({ todoText: '' })
 		} else {
