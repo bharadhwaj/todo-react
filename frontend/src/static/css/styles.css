@@ -1,0 +1,13 @@
+.strikethrough + label {
+	text-decoration: line-through;
+}
+
+.close-button {
+	cursor: pointer;
+}
+
+.loader-class {
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+}
