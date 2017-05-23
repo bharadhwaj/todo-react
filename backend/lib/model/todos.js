@@ -2,8 +2,16 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../services/db')
 
+<<<<<<< HEAD
 const Users = require('./users')
 
+=======
+<<<<<<< HEAD
+const Users = require('./users')
+
+=======
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
+>>>>>>> 226bfe5b104dc9b05cffc8d9aa3b7aec09b51c7a
 const Todos = sequelize.define('Todos', {
 	id : {
 		type : Sequelize.BIGINT,
@@ -29,6 +37,16 @@ const Todos = sequelize.define('Todos', {
 	comment: "Table used for storing the Todos."
 })
 
+<<<<<<< HEAD
 Todos.belongsTo(Users, { foreignKey: 'userEmail', foreignKeyConstraint: true, onDelete : 'CASCADE', onUpdate : 'CASCADE'})
 
 module.exports = Todos
+=======
+<<<<<<< HEAD
+Todos.belongsTo(Users, { foreignKey: 'userEmail', foreignKeyConstraint: true, onDelete : 'CASCADE', onUpdate : 'CASCADE'})
+
+module.exports = Todos
+=======
+module.exports = Todos
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
+>>>>>>> 226bfe5b104dc9b05cffc8d9aa3b7aec09b51c7a

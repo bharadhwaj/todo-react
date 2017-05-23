@@ -17,7 +17,14 @@
     "querystring": "^0.2.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+<<<<<<< HEAD
     "react-google-login": "^2.8.9",
+=======
+<<<<<<< HEAD
+    "react-google-login": "^2.8.9",
+=======
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
+>>>>>>> 226bfe5b104dc9b05cffc8d9aa3b7aec09b51c7a
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "redux": "^3.6.0",
