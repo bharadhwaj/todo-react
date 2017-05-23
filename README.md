@@ -1,9 +1,17 @@
 # To Do App #
 
-
-A sample app which can serve the purpose of To-Do note. Currently only using React-Redux, back end is yet to be added.
+Sample To-Do app, using React + Redux at front-end and uses Node.js on backend.  
+This uses MySQL as database and uses Sequelize as ORM.
 
 ---
+
+## Features ##
+
+* User can log in using their google account.
+* User can add new To-Do.
+* User can move a To-Do to completed.
+* User can delete existing cards.
+* User can see the number of finished and unfinished tasks.
 
 ## Usage ##
 
