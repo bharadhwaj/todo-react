@@ -8,7 +8,7 @@ module.exports = {
 		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
 		res.setHeader('Access-Control-Allow-Methods', 'GET')
 		res.setHeader('Access-Control-Allow-Credentials', 'true')
-		todo.getAllTodos()
+		todo.getAllTodos(req.params.email)
 		.then(todoResponse => { res.json(todoResponse) })
 	},
 
@@ -16,9 +16,9 @@ module.exports = {
 		res.setHeader('Access-Control-Allow-Origin', '*')//req.header('Origin'))
 		res.setHeader('Access-Control-Allow-Methods', 'POST')
 		res.setHeader('Access-Control-Allow-Credentials', 'true')
-		let todoDetails = { id : req.body.id, text : req.body.text }
+		let todoDetails = { id : req.body.id, text : req.body.text, userEmail : req.body.userEmail}
 		todo.createTodo(todoDetails)
-		.then(todoResponse => { res.json(todoResponse) })
+				.then(todoResponse => { res.json(todoResponse) })
 	},
 
 	toggleTodo(req, res) {
@@ -27,7 +27,7 @@ module.exports = {
 		res.setHeader('Access-Control-Allow-Credentials', 'true')
 		let todoDetails = { id : req.body.id, complete : req.body.complete }
 		todo.toggleTodo(todoDetails)
-		.then(todoResponse => { res.json(todoResponse) })
+				.then(todoResponse => { res.json(todoResponse) })
 	},
 
 	removeTodo(req, res) {
@@ -35,6 +35,6 @@ module.exports = {
 		res.setHeader('Access-Control-Allow-Methods', 'POST')
 		res.setHeader('Access-Control-Allow-Credentials', 'true')
 		todo.removeTodo(req.params.id)
-		.then(todoResponse => { res.json(todoResponse) })
+				.then(todoResponse => { res.json(todoResponse) })
 	}
 }

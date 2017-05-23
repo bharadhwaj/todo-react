@@ -11,6 +11,7 @@ class TodoClass {
 			return Todos.create({
 				id : todoDetails.id,
 				text : todoDetails.text,
+				userEmail : todoDetails.userEmail,
 			})
 			.then(todo => {
 				console.log('\n New entry added: \n ', todo.dataValues)
@@ -29,11 +30,11 @@ class TodoClass {
 				return ({ status : 'FAILED', error : errors })
 			})
 			.catch(err => {
-				console.log('\n Error in addTodo: \n ', err) 
+				console.log('\n Error in addTodo: \n ', err)
 				return ({ status : 'FAILED', error : err })
 			})
 		})
-			
+
 	}
 
 	toggleTodo(todoDetails) {
@@ -62,11 +63,11 @@ class TodoClass {
 				return ({ status : 'FAILED', error : errors })
 			})
 			.catch(err => {
-				console.log('\n Error in addTodo: \n ', err) 
+				console.log('\n Error in addTodo: \n ', err)
 				return ({ status : 'FAILED', error : err })
 			})
 		})
-			
+
 	}
 
 	removeTodo(id) {
@@ -80,11 +81,11 @@ class TodoClass {
 			.then(response => {
 				if (response === 1){
 					console.log('Successfully deleted')
-					return ({ status: 'SUCCESS', message : 'Successfully deleted' }) 
+					return ({ status: 'SUCCESS', message : 'Successfully deleted' })
 				}
 				else {
 					console.log('Deletion failed')
-					return ({ status: 'FAILED', message : 'No such element to delete' }) 
+					return ({ status: 'FAILED', message : 'No such element to delete' })
 				}
 			})
 			.catch(Sequelize.Error, err => {
@@ -100,19 +101,23 @@ class TodoClass {
 				return ({ status : 'FAILED', error : errors })
 			})
 			.catch(err => {
-				console.log('\n Error in addTodo: \n ', err) 
+				console.log('\n Error in addTodo: \n ', err)
 				return ({ status : 'FAILED', error : err })
 			})
 		})
 	}
 
-	getAllTodos() {
+	getAllTodos(userEmail) {
 		return sequelize.sync()
 		.then(() => {
-			return Todos.findAll({})
+			return Todos.findAll({
+				where : {
+					userEmail : userEmail
+				}
+			})
 			.then(allTodos => {
 				console.log('\n Successfully fetched all todos.\n ')
-				return ({ status: 'SUCCESS', allTodos : allTodos }) 
+				return ({ status: 'SUCCESS', allTodos : allTodos })
 			})
 			.catch(Sequelize.Error, err => {
 				console.log('\n Sequelize Error in addTodo: \n ', err.errors)
@@ -127,7 +132,7 @@ class TodoClass {
 				return ({ status : 'FAILED', error : errors })
 			})
 			.catch(err => {
-				console.log('\n Error in addTodo: \n ', err) 
+				console.log('\n Error in addTodo: \n ', err)
 				return ({ status : 'FAILED', error : err })
 			})
 		})

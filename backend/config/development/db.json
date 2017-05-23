@@ -1,6 +1,6 @@
 {
-	"host" : "10.3.0.35",
-	"username" : "seconds_user",
+	"host" : "localhost",
+	"username" : "localhost",
 	"password" : "",
 	"database" : "TodoDatabase"
 }
