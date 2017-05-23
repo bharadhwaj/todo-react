@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+<<<<<<< HEAD
 import BadgeIcons from '../components/BadgeIcons'
+=======
+import BadgeIcons from './BadgeIcons'
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 
 @connect((store) => {
 	return {
@@ -10,7 +14,11 @@ import BadgeIcons from '../components/BadgeIcons'
 	}
 })
 class Counter extends Component {
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 	render() {
 		const { totalTodos, inCompletedTodos } = this.props
 		return (

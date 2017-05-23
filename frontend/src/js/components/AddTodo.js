@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { connect } from 'react-redux'
 
 import { adNewTodo } from '../actions/todoActions'
@@ -8,6 +9,11 @@ import { adNewTodo } from '../actions/todoActions'
 		userData : store.userReducer,
 	}
 })
+=======
+
+import { adNewTodo } from '../actions/todoActions'
+
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 class AddTodo extends Component {
 
 	componentWillMount() {
@@ -15,6 +21,7 @@ class AddTodo extends Component {
 	}
 
 	createTodo(event) {
+<<<<<<< HEAD
 		const { userEmail } = this.props.userData
 		event.preventDefault()
 		if (this.state.todoText.trim()) {
@@ -23,6 +30,11 @@ class AddTodo extends Component {
 										complete : false,
 										userEmail : userEmail
 									}
+=======
+		event.preventDefault()
+		if (this.state.todoText.trim()) {
+			let todo = { id : Date.now(), text : this.state.todoText, complete : false }
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 			adNewTodo(todo)
 			this.setState({ todoText: '' })
 		} else {

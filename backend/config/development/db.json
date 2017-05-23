@@ -1,6 +1,14 @@
 {
+<<<<<<< HEAD
 	"host" : "localhost",
 	"username" : "localhost",
 	"password" : "",
 	"database" : "TodoDatabase"
 }
+=======
+	"host" : "10.3.0.35",
+	"username" : "seconds_user",
+	"password" : "",
+	"database" : "TodoDatabase"
+}
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569

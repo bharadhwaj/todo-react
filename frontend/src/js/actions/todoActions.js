@@ -6,8 +6,13 @@ import apiConfig from '../config/apiConfig.js'
 
 const apiUrl = apiConfig.method + '://' +  apiConfig.host + ':' + apiConfig.port
 
+<<<<<<< HEAD
 export function fetchAllTodos(userEmail) {
 	axios.get(apiUrl+'/todos/all/'+userEmail)
+=======
+export function fetchAllTodos() {
+	axios.get(apiUrl+'/todos/all')
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 	.then(todos => {
 		if (todos.data.status === 'SUCCESS') {
 			const allTodos = todos.data.allTodos
@@ -27,7 +32,10 @@ export function adNewTodo(todo) {
 		queryString.stringify({
 			id : todo.id,
 			text : todo.text,
+<<<<<<< HEAD
 			userEmail : todo.userEmail
+=======
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 		})
 	)
 	.then(todos => {
@@ -52,7 +60,11 @@ export function toggleTodo(todo, status) {
 			complete : !todo.complete,
 		})
 	)
+<<<<<<< HEAD
 	.then(todos => {
+=======
+	.then(todos => { 
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 		if (status === 'complete') {
 			Materialize.toast('Card successfully moved to To-Do.', 2000, 'light-blue')
 		} else if (status === 'incomplete') {
@@ -74,4 +86,8 @@ export function deleteTodo(todo) {
 		}
 	})
 	.catch(err => console.log('Fetch All Todos Error : ', err) )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569

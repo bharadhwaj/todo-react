@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { hashHistory } from 'react-router'
@@ -14,10 +15,16 @@ class Navbar extends Component {
 	render() {
 		const { isLoggedIn, userName } = this.props.userData
 
+=======
+
+class Navbar extends Component {
+	render() {
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 		return (
 			<div className="row">
 				<nav>
 					<div className="nav-wrapper teal">
+<<<<<<< HEAD
 						<span className="brand-logo center">
 							<Link to="/"> <h4>To Do List</h4> </Link>
 						</span>
@@ -32,6 +39,11 @@ class Navbar extends Component {
 										</span>
 							}
 			      </ul>
+=======
+						<a href="/" onClick={ (event) => event.preventDefault() } className="brand-logo center">
+							<h4>To-Do List</h4>
+						</a>
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 					</div>
 				</nav>
 			</div>
@@ -39,4 +51,8 @@ class Navbar extends Component {
 	}
 }
 
+<<<<<<< HEAD
 export default Navbar
+=======
+export default Navbar
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569

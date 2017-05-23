@@ -11,7 +11,10 @@ class TodoClass {
 			return Todos.create({
 				id : todoDetails.id,
 				text : todoDetails.text,
+<<<<<<< HEAD
 				userEmail : todoDetails.userEmail,
+=======
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 			})
 			.then(todo => {
 				console.log('\n New entry added: \n ', todo.dataValues)
@@ -30,11 +33,19 @@ class TodoClass {
 				return ({ status : 'FAILED', error : errors })
 			})
 			.catch(err => {
+<<<<<<< HEAD
 				console.log('\n Error in addTodo: \n ', err)
 				return ({ status : 'FAILED', error : err })
 			})
 		})
 
+=======
+				console.log('\n Error in addTodo: \n ', err) 
+				return ({ status : 'FAILED', error : err })
+			})
+		})
+			
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 	}
 
 	toggleTodo(todoDetails) {
@@ -63,11 +74,19 @@ class TodoClass {
 				return ({ status : 'FAILED', error : errors })
 			})
 			.catch(err => {
+<<<<<<< HEAD
 				console.log('\n Error in addTodo: \n ', err)
 				return ({ status : 'FAILED', error : err })
 			})
 		})
 
+=======
+				console.log('\n Error in addTodo: \n ', err) 
+				return ({ status : 'FAILED', error : err })
+			})
+		})
+			
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 	}
 
 	removeTodo(id) {
@@ -81,11 +100,19 @@ class TodoClass {
 			.then(response => {
 				if (response === 1){
 					console.log('Successfully deleted')
+<<<<<<< HEAD
 					return ({ status: 'SUCCESS', message : 'Successfully deleted' })
 				}
 				else {
 					console.log('Deletion failed')
 					return ({ status: 'FAILED', message : 'No such element to delete' })
+=======
+					return ({ status: 'SUCCESS', message : 'Successfully deleted' }) 
+				}
+				else {
+					console.log('Deletion failed')
+					return ({ status: 'FAILED', message : 'No such element to delete' }) 
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 				}
 			})
 			.catch(Sequelize.Error, err => {
@@ -101,12 +128,17 @@ class TodoClass {
 				return ({ status : 'FAILED', error : errors })
 			})
 			.catch(err => {
+<<<<<<< HEAD
 				console.log('\n Error in addTodo: \n ', err)
+=======
+				console.log('\n Error in addTodo: \n ', err) 
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 				return ({ status : 'FAILED', error : err })
 			})
 		})
 	}
 
+<<<<<<< HEAD
 	getAllTodos(userEmail) {
 		return sequelize.sync()
 		.then(() => {
@@ -118,6 +150,15 @@ class TodoClass {
 			.then(allTodos => {
 				console.log('\n Successfully fetched all todos.\n ')
 				return ({ status: 'SUCCESS', allTodos : allTodos })
+=======
+	getAllTodos() {
+		return sequelize.sync()
+		.then(() => {
+			return Todos.findAll({})
+			.then(allTodos => {
+				console.log('\n Successfully fetched all todos.\n ')
+				return ({ status: 'SUCCESS', allTodos : allTodos }) 
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 			})
 			.catch(Sequelize.Error, err => {
 				console.log('\n Sequelize Error in addTodo: \n ', err.errors)
@@ -132,11 +173,19 @@ class TodoClass {
 				return ({ status : 'FAILED', error : errors })
 			})
 			.catch(err => {
+<<<<<<< HEAD
 				console.log('\n Error in addTodo: \n ', err)
+=======
+				console.log('\n Error in addTodo: \n ', err) 
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
 				return ({ status : 'FAILED', error : err })
 			})
 		})
 	}
 }
 
+<<<<<<< HEAD
 module.exports = TodoClass
+=======
+module.exports = TodoClass
+>>>>>>> a067d2a2b968be4bc21e74986d74df610e6d2569
