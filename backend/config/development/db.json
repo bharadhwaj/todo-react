@@ -1,0 +1,6 @@
+{
+	"host" : "localhost",
+	"username" : "localhost",
+	"password" : "",
+	"database" : "TodoDatabase"
+}
